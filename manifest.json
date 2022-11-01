@@ -1,24 +1,33 @@
 {
     "manifest_version": 3,
-    "name": "Camelus Amazonious",
-    "description": "Base Level Extension",
-    "version": "0.0.1",
+    "name": "Camel by Camel",
+    "description": "See CamelCamelCamel price chart in Amazon product page.",
+    "version": "0.1.0",
     "action": {
-        "default_popup": "hello.html",
+        "default_popup": "popup.html",
         "default_icon": "icons/favicon.ico"
     },
     "background": {
         "service_worker": "background.js"
     },
     "content_scripts": [
-        "scripts/content.js"
+        {
+            "js": [
+                "scripts/content.js"
+            ],
+            "matches": [
+                "https://*.amazon.com/*"
+            ]
+        }
     ],
-    "matches": [
-        "https://developer.chrome.com/docs/extensions/*",
-        "https://developer.chrome.com/docs/webstore/*"
+    "permissions": [
+        "activeTab",
+        "tabs"
     ],
     "icons": {
         "16": "icons/favicon-16x16.png",
-        "32": "icons/favicon-32x32.png"
+        "32": "icons/favicon-32x32.png",
+        "48": "icons/favicon-48x48.png",
+        "128": "icons/favicon-128x128.png"
     }
 }

@@ -1,1 +1,2 @@
-console.log("HELLO EXTENSION")
+// Output found in extension window console.  
+// console.log("EXTENSION POPUP.JS")
