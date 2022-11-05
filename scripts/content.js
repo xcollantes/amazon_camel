@@ -1,9 +1,12 @@
-// Output found in web pages's console. 
-console.log("STARTING CONTENT.JS");
-
-const insertPoint = document.querySelector("#GridgetContainer > div");
+let insertPoint = document.querySelector("#ppd");
 
 if (insertPoint) {
+    run(insertPoint)
+} else {
+    console.error("No entry point found.")
+}
+
+function run(insertPoint) {
     chrome.runtime.sendMessage("get_url", response => {
         const asin = getAsinFromUrl(response.tab.url);
 
@@ -11,7 +14,7 @@ if (insertPoint) {
         const camelLink = `https://camelcamelcamel.com/product/${asin}`;
         const altText = `Price graph found at ${camelLink}`;
 
-        const html = `<a href='${graphLink}'><img src='${graphLink}' alt='${altText}' /></a>`;
+        const html = `<a href='${graphLink}'><img src='${graphLink}' alt='${altText}' maxWidth="80%" /></a>`;
 
         // const graph = document.createElement("img");
         // graph.setAttribute("src", g)
@@ -26,5 +29,5 @@ if (insertPoint) {
  * Extract the ASIN code from the Amazon.com link. 
  */
 function getAsinFromUrl(url) {
-    return url.match(/\/dp\/([\d\w]+)\?/)[1];
+    return url.match(/\/dp\/([\d\w]+)[\?\&\/]?/)[1];
 }

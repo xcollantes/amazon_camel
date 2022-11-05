@@ -1,7 +1,3 @@
-// Output found in extension console. 
-// console.log("BACKGROUND.JS");
-
-// Use Chrome API to get current page's url.  
 async function getTabUrl() {
     const [tab] = await chrome.tabs.query(
         { active: true, lastFocusedWindow: true });

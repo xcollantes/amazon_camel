@@ -3,10 +3,6 @@
     "name": "Camel by Camel",
     "description": "See CamelCamelCamel price chart in Amazon product page.",
     "version": "0.1.0",
-    "action": {
-        "default_popup": "popup.html",
-        "default_icon": "icons/favicon.ico"
-    },
     "background": {
         "service_worker": "background.js"
     },
