@@ -2,7 +2,7 @@
     "manifest_version": 3,
     "name": "Camel by Camel",
     "description": "See CamelCamelCamel price chart in Amazon product page.",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "background": {
         "service_worker": "background.js"
     },
@@ -17,8 +17,7 @@
         }
     ],
     "permissions": [
-        "activeTab",
-        "tabs"
+        "activeTab"
     ],
     "icons": {
         "16": "icons/favicon-16x16.png",
