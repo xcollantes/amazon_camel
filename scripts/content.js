@@ -2,8 +2,6 @@ let insertPoint = document.querySelector("#ppd");
 
 if (insertPoint) {
     run(insertPoint)
-} else {
-    console.error("No entry point found.")
 }
 
 function run(insertPoint) {
@@ -16,6 +14,7 @@ function run(insertPoint) {
 
         const html = `<a href='${graphLink}'><img src='${graphLink}' alt='${altText}' maxWidth="80%" /></a>`;
 
+        // TODO: See if using setAttribute is beneficial.  
         // const graph = document.createElement("img");
         // graph.setAttribute("src", g)
         // graph.setAttribute("alt", g)
