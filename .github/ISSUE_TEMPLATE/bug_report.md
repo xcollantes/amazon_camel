@@ -2,7 +2,7 @@
 name: Bug report
 about: 'Report problem '
 title: "[BUG] "
-labels: bug
+labels: bug, user-reported
 assignees: xcollantes
 
 ---
