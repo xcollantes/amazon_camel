@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "Amazon Price History Tracker",
-    "description": "See CamelCamelCamel price chart right inside the Amazon product page.",
+    "description": "Put CamelCamelCamel price chart right inside the Amazon product page.",
     "version": "0.2.0",
     "background": {
         "service_worker": "background.js"
