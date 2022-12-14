@@ -1,8 +1,8 @@
 {
     "manifest_version": 3,
-    "name": "Camel by Camel",
-    "description": "See CamelCamelCamel price chart in Amazon product page.",
-    "version": "0.1.1",
+    "name": "Amazon Price History Tracker",
+    "description": "See CamelCamelCamel price chart right inside the Amazon product page.",
+    "version": "0.2.0",
     "background": {
         "service_worker": "background.js"
     },
@@ -20,9 +20,9 @@
         "tabs"
     ],
     "icons": {
-        "16": "icons/favicon-16x16.png",
-        "32": "icons/favicon-32x32.png",
-        "48": "icons/favicon-48x48.png",
-        "128": "icons/favicon-128x128.png"
+        "16": "icons/dollar-16x16.png",
+        "32": "icons/dollar-32x32.png",
+        "48": "icons/favicon.ico",
+        "128": "icons/dollar-128x128.png"
     }
 }
