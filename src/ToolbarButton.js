@@ -1,7 +1,19 @@
 import { BugReport, GitHub, InsertChart, Quiz } from "@mui/icons-material";
-import { Button, Card, CardActionArea, CardContent, CardHeader, List, ListItem, ListItemButton, ListItemIcon, ListItemText, SpeedDialIcon, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  Link,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+  Typography
+} from "@mui/material";
 
-import { Box } from "@mui/system";
 import "./ToolbarButton.css";
 
 export default function ToolbarButton() {
@@ -14,27 +26,33 @@ export default function ToolbarButton() {
 
   return (
     <>
-      <Card>
+      <Card sx={{ mb: "1em" }}>
         <CardContent>
-          <Typography variant="h5" sx={{ mt: "0.5em" }}>
-            Amazon Price History Tracker
+          <Typography variant="h5" gutterBottom>
+            Amazon Price History
           </Typography>
           <Typography variant="body1">
-            A graph will appear scroll down any Amazon product page
+            Scroll down any Amazon product page for graph
           </Typography>
-          <Button variant="contained">Show me</Button>
         </CardContent>
+        <CardActions>
+          <Link href="https://www.amazon.com/Images-SI-Uranium-Ore/dp/B000796XXM#price-tracker" target="_blank">
+            <Button variant="contained">Show example</Button>
+          </Link>
+        </CardActions>
       </Card>
-      <Box sx={{ width: "80vw", bgcolor: "background.paper" }}>
+      <Box sx={{ bgcolor: "background.paper" }}>
         <nav aria-label="actions">
           <List dense>
             {listItems.map(item =>
-              <ListItem disablePadding>
-                <ListItemButton>
-                  <ListItemIcon>{item.icon}</ListItemIcon>
-                  <ListItemText>{item.text}</ListItemText>
-                </ListItemButton>
-              </ListItem>
+              <Link href={item.target} target="_blank">
+                <ListItem disablePadding>
+                  <ListItemButton>
+                    <ListItemIcon>{item.icon}</ListItemIcon>
+                    <ListItemText>{item.text}</ListItemText>
+                  </ListItemButton>
+                </ListItem>
+              </Link>
             )}
           </List>
         </nav>

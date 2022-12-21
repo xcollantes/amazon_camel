@@ -12,7 +12,7 @@ function run(insertPoint) {
         const camelLink = `https://camelcamelcamel.com/product/${asin}`;
         const altText = `Price graph found at ${camelLink}`;
 
-        const html = `<a href='${graphLink}'><img src='${graphLink}' alt='${altText}' maxWidth="80%" /></a>`;
+        const html = `<a href='${graphLink}'><img src='${graphLink}' id='price-tracker' alt='${altText}' maxWidth="80%" /></a>`;
 
         // TODO: See if using setAttribute is beneficial.  
         // const graph = document.createElement("img");
