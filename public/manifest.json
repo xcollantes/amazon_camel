@@ -5,7 +5,7 @@
     "version": "0.3.0",
     "action": {
         "default_title": "Amazon Price History Tracker",
-        "default_popup": "popup.html"
+        "default_popup": "index.html"
     },
     "background": {
         "service_worker": "background.js"

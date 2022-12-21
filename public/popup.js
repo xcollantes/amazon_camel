@@ -1,4 +1,3 @@
-
 async function getTabUrl() {
     const [tab] = await chrome.tabs.query(
         { active: true, lastFocusedWindow: true });
