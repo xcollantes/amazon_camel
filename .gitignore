@@ -106,6 +106,8 @@ dist
 # VSCode settings  
 .vscode/
 
+build/
+
 # misc
 .DS_Store
 .env.local
