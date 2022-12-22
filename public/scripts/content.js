@@ -10,7 +10,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
         const graphElement = document.getElementById(graphId)
         if (graphElement) {
             document.getElementById(graphId).scrollIntoView({ behavior: "smooth" });
-
+            flashBorder(graphId);
         } else {
             sendResponse("no_graph_found");
         }
@@ -19,18 +19,27 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 });
 
 /** Flash a boarder around the graph for visibility. */
-// function flashBorder(graphId) {
-//     const color = "#D0342C";
-//     let exposure = 5;
-//     let step = 5;
-//     setInterval(function () {
-//         if (exposure >= 50 || exposure <= 0) {
-//             step *= -1;
-//         }
-//         exposure += step;
-//         document.getElementById(graphId).style.boxShadow = `0 0 ${exposure}px ${color}`;
-//     }, 200)
-// }
+function flashBorder(graphId) {
+    const color = "#2e7d32";
+    let step = 5;
+
+    let max = 80;
+    let min = 0;
+    let exposure = min + step;
+
+    const flashingLights = setInterval(function () {
+        if (exposure >= max || exposure <= min) {
+            step *= -1;
+        }
+        exposure += step;
+        document.getElementById(graphId).style.boxShadow = `0 0 ${exposure}px ${color}`;
+    }, 50);
+
+    document.addEventListener("click", () => {
+        clearInterval(flashingLights);
+        document.getElementById(graphId).style.boxShadow = "0 0 0";
+    });
+}
 
 function insertGraph(insertPoint) {
     chrome.runtime.sendMessage("get_url", response => {
@@ -57,8 +66,4 @@ function insertGraph(insertPoint) {
  */
 function getAsinFromUrl(url) {
     return url.match(/\/dp\/([\d\w]+)[\?\&\/]?/)[1];
-}
-
-function sleep(milliseconds) {
-    return new Promise(resolve => setTimeout(resolve, milliseconds))
 }
