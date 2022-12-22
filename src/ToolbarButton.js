@@ -24,6 +24,19 @@ export default function ToolbarButton() {
     { text: "See code", target: "https://github.com/xcollantes/amazon_camel", icon: <GitHub /> },
   ];
 
+  function handleButtonShowMe() {
+    window.chrome.tabs.query(
+      { active: true, lastFocusedWindow: true })
+      .then(tab => {
+        console.log("TAB " + tab[0].id);
+        window.chrome.tabs.sendMessage(tab[0].id, "show_graph", response => {
+          if (response === "no_graph_found") {
+            console.log("NO GAPH PHAUND");
+          }
+        });
+      });
+  }
+
   return (
     <>
       <Card sx={{ mb: "1em" }}>
@@ -36,9 +49,7 @@ export default function ToolbarButton() {
           </Typography>
         </CardContent>
         <CardActions>
-          <Link href="https://www.amazon.com/Images-SI-Uranium-Ore/dp/B000796XXM#price-tracker" target="_blank">
-            <Button variant="contained">Show example</Button>
-          </Link>
+          <Button variant="contained" onClick={() => handleButtonShowMe()}>Show me</Button>
         </CardActions>
       </Card>
       <Box sx={{ bgcolor: "background.paper" }}>
