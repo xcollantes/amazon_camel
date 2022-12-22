@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { BugReport, GitHub, InsertChart, Quiz } from "@mui/icons-material";
 import {
   Box,
@@ -17,6 +18,16 @@ import {
 import "./ToolbarButton.css";
 
 export default function ToolbarButton() {
+  const [noGraph, setNoGraph] = useState(false);
+  const [noGraphMessage, setNoGraphMessage] = useState();
+
+  const cheekyErrors = ["except this page - this page doesn't have a graph",
+    "try again, no graph here",
+    "just kidding, this page doesn't have a graph",
+    "okay not this page though - no graph here",
+    "oops, no graph found here",
+    "wah-wah, no graph here",];
+
   const listItems = [
     { text: "See CamelCamelCamel.com", target: "https://camelcamelcamel.com", icon: <InsertChart /> },
     { text: "Report bug", target: "https://bit.ly/report-issue-amazon-camel", icon: <BugReport /> },
@@ -31,7 +42,8 @@ export default function ToolbarButton() {
         console.log("TAB " + tab[0].id);
         window.chrome.tabs.sendMessage(tab[0].id, "show_graph", response => {
           if (response === "no_graph_found") {
-            console.log("NO GAPH PHAUND");
+            setNoGraph(true);
+            setNoGraphMessage(cheekyErrors[Math.floor(Math.random() * 10 % cheekyErrors.length)]);
           }
         });
       });
@@ -47,9 +59,18 @@ export default function ToolbarButton() {
           <Typography variant="body1">
             Scroll down any Amazon product page for graph
           </Typography>
+          <Box>
+            {noGraph &&
+              <Typography variant="body1" color="error">
+                ... {noGraphMessage}
+              </Typography>
+            }
+          </Box>
         </CardContent>
         <CardActions>
-          <Button variant="contained" onClick={() => handleButtonShowMe()}>Show me</Button>
+          <Button variant="contained" onClick={() => handleButtonShowMe()}>
+            Show me
+          </Button>
         </CardActions>
       </Card>
       <Box sx={{ bgcolor: "background.paper" }}>
