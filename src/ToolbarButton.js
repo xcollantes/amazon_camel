@@ -26,7 +26,8 @@ export default function ToolbarButton() {
     "just kidding, this page doesn't have a graph",
     "okay not this page though - no graph here",
     "oops, no graph found here",
-    "wah-wah, no graph here",];
+    "wah-wah, no graph here",
+    <img src="https://i.imgflip.com/7561fu.jpg" width="100px" alt="meme" />,];
 
   const listItems = [
     { text: "See CamelCamelCamel.com", target: "https://camelcamelcamel.com", icon: <InsertChart /> },

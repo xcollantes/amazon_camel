@@ -2,7 +2,7 @@ const graphId = "price-tracker";
 let insertPoint = document.querySelector("#ppd");
 
 if (insertPoint) {
-    // insertGraph(insertPoint);
+    insertGraph(insertPoint);
 }
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
@@ -10,29 +10,13 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
         const graphElement = document.getElementById(graphId)
         if (graphElement) {
             document.getElementById(graphId).scrollIntoView({ behavior: "smooth" });
+
         } else {
             sendResponse("no_graph_found");
         }
         return true;
     }
 });
-
-/** Scroll the window down to the graph. */
-function scrollToGraph(graphId) {
-    const observer = new MutationObserver((mutations, obs) => {
-        const graph = document.getElementById(graphId);
-        if (graph) {
-            graph.scrollIntoView({ behavior: "smooth" });
-            obs.disconnect();
-            return;
-        }
-    });
-
-    observer.observe(document, {
-        childList: true,
-        subtree: true
-    });
-}
 
 /** Flash a boarder around the graph for visibility. */
 // function flashBorder(graphId) {
