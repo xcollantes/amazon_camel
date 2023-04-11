@@ -12,7 +12,7 @@ import {
   ListItemButton,
   ListItemIcon,
   ListItemText,
-  Typography
+  Typography,
 } from "@mui/material";
 
 import "./ToolbarButton.css";
@@ -21,30 +21,37 @@ export default function ToolbarButton() {
   const [noGraph, setNoGraph] = useState(false);
   const [noGraphMessage, setNoGraphMessage] = useState();
 
-  const cheekyErrors = ["except this page - this page doesn't have a graph",
+  const cheekyErrors = [
+    "except this page - this page doesn't have a graph",
     "try again, no graph here",
     "just kidding, this page doesn't have a graph",
     "okay not this page though - no graph here",
     "oops, no graph found here",
     "wah-wah, no graph here",
-    <img src="https://i.imgflip.com/7561fu.jpg" width="100px" alt="meme" />,];
+    <img src="https://i.imgflip.com/7561fu.jpg" width="100px" alt="meme" />,
+  ];
 
   const listItems = [
-    { text: "See CamelCamelCamel.com", target: "https://camelcamelcamel.com", icon: <InsertChart /> },
-    { text: "Report bug", target: "https://bit.ly/report-issue-amazon-camel", icon: <BugReport /> },
-    { text: "Request feature", target: "https://bit.ly/request-feature-amazon-camel", icon: <Quiz /> },
-    { text: "See code", target: "https://github.com/xcollantes/amazon_camel", icon: <GitHub /> },
+    {
+      text: "See CamelCamelCamel.com",
+      target: "https://camelcamelcamel.com",
+      icon: <InsertChart />,
+    },
   ];
 
   function handleButtonShowMe() {
-    window.chrome.tabs.query(
-      { active: true, lastFocusedWindow: true })
-      .then(tab => {
+    window.chrome.tabs
+      .query({ active: true, lastFocusedWindow: true })
+      .then((tab) => {
         console.log("TAB " + tab[0].id);
-        window.chrome.tabs.sendMessage(tab[0].id, "show_graph", response => {
+        window.chrome.tabs.sendMessage(tab[0].id, "show_graph", (response) => {
           if (response === "no_graph_found") {
             setNoGraph(true);
-            setNoGraphMessage(cheekyErrors[Math.floor(Math.random() * 10 % cheekyErrors.length)]);
+            setNoGraphMessage(
+              cheekyErrors[
+                Math.floor((Math.random() * 10) % cheekyErrors.length)
+              ]
+            );
           }
         });
       });
@@ -61,11 +68,11 @@ export default function ToolbarButton() {
             Scroll down any Amazon product page for graph
           </Typography>
           <Box>
-            {noGraph &&
+            {noGraph && (
               <Typography variant="body1" color="error">
                 ... {noGraphMessage}
               </Typography>
-            }
+            )}
           </Box>
         </CardContent>
         <CardActions>
@@ -77,7 +84,7 @@ export default function ToolbarButton() {
       <Box sx={{ bgcolor: "background.paper" }}>
         <nav aria-label="actions">
           <List dense>
-            {listItems.map(item =>
+            {listItems.map((item) => (
               <Link href={item.target} target="_blank">
                 <ListItem disablePadding>
                   <ListItemButton>
@@ -86,7 +93,7 @@ export default function ToolbarButton() {
                   </ListItemButton>
                 </ListItem>
               </Link>
-            )}
+            ))}
           </List>
         </nav>
       </Box>
